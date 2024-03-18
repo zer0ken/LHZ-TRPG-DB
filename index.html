@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script type="module" src="script.js"></script>
+
+    <!-- CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <title>로그 호라이즌 TRPG 특기 데이터베이스</title>
+</head>
+
+<body>
+    <main>
+        <div id="selected" class="conatiner">
+            <div class="empty">선택된 특기가 이 곳에 표시됩니다.</div>
+        </div>
+        <div id="skills" class="conatiner">
+            <div id="nav">
+                <ul id="nav_menu">
+                </ul>
+                <span>&nbsp;↕&nbsp;</span>
+            </div>
+            <div class="empty">
+                <input type="file" id="file_uploads" accept=".tsv">
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

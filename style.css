@@ -1,0 +1,183 @@
+*, html {
+    scroll-behavior: smooth !important;
+}
+
+body {
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 0;
+}
+
+h2 {
+    font-size: 1.7em;
+    margin-bottom: 0;
+}
+
+h3 {
+    font-size: 1.5em;
+    margin-bottom: 0;
+}
+
+h4 {
+    font-size: 1.3em;
+    margin-bottom: 0;
+}
+
+main {
+    display: flex;
+    height: 100vh;
+}
+
+#selected {
+    flex: 1;
+    background-color: #a3d4a6;
+    padding: 16px 50px 100px 50px;
+    overflow-x: hidden;
+}
+
+#skills {
+    flex: 3;
+    background-color: #f8f8f8;
+    padding: 16px 50px 100px 50px;
+    overflow-x: hidden;
+}
+
+#nav {
+    position: absolute;
+    width: auto;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    right: 32px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.329);
+    display: flex;
+    flex-direction: row;
+
+    transition-property: all;
+    transition-duration: 100ms;
+}
+
+#nav_menu {
+    display: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer
+}
+
+#nav:hover > #nav_menu {
+    display: inline;
+}
+
+#nav_menu > li {
+    text-decoration: none;
+    display: block;
+    margin: 0;
+}
+
+#nav_menu > li > a {
+    display: inline-block;
+    padding: 1px 3px 1px 4px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}  
+
+a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.conatiner {
+    overflow: scroll;
+}
+
+.category {
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+}
+
+.category > .label {
+    grid-column: 1 / -1;
+    display: inline;
+}
+
+.category:has(>.skill) {
+    display: grid;
+    gap: 14px 20px;
+    
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.skill {
+    text-align: center;
+}
+
+table {
+    border-radius: 2px;
+    box-shadow: 0 0 3px #c7c7c7;
+    background-color: #fdfdfd;
+    padding: 0;
+    border-collapse: collapse;
+}
+
+tr.detail > *:nth-child(2n-1) {
+    width: 20%;
+}
+
+tr.detail > *:nth-child(2n) {
+    width: 30%;
+    font-stretch: 70%;
+}
+
+tr.name th {
+    font-size: 1.5em;
+    height: 2em;
+}
+
+tr.name.전투 th {
+    background-color: #313231;
+    color: #e6e6e6;
+}
+
+tr.name.일반 th {
+    background-color: #d4d4d4;
+    color: #141414;
+}
+
+tr.tag td {
+    text-align: left;;
+}
+
+tr.detail, tr.tag {
+    height: 1em;
+    border-bottom: #e6e6e6 solid 2px;
+}
+
+tr.effect td {
+    font-stretch: 80%;
+    padding: 8px 12px 8px 12px;
+}
+
+@media(max-width: 1300px) {
+    .category:has(>.skill) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #skills {
+        flex: 2;
+        padding: 16px;
+    }
+}
