@@ -36,18 +36,33 @@ main {
     height: 100vh;
 }
 
-#selected {
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0 0 0 10px;
+}
+
+#extra {
     flex: 1;
-    background-color: #a3d4a6;
-    padding: 16px 50px 100px 50px;
+    background-color: #e6e6e6;
+    padding: 4em 50px 100px 50px;
     overflow-x: hidden;
 }
 
+#extra > div {
+    width: 100%;
+}
+
+#extra p {
+    margin: 6px 0 0 0;
+}
+
 #skills {
-    flex: 3;
+    flex: 5;
     background-color: #f8f8f8;
     padding: 16px 50px 100px 50px;
     overflow-x: hidden;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.329);
 }
 
 #nav {
@@ -55,15 +70,14 @@ main {
     width: auto;
     background-color: #333;
     color: #fff;
-    padding: 10px;
+    padding: 10px 14px 10px 14px;
     text-align: center;
     right: 32px;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.329);
-    display: flex;
-    flex-direction: row;
+}
 
-    transition-property: all;
-    transition-duration: 100ms;
+#nav > .scroll {
+    padding: 0 3px 0 3px;
 }
 
 #nav_menu {
@@ -74,7 +88,7 @@ main {
 }
 
 #nav:hover > #nav_menu {
-    display: inline;
+    display: block;
 }
 
 #nav_menu > li {
@@ -103,7 +117,6 @@ a {
 }
 
 .category {
-    padding-bottom: 20px;
     display: flex;
     flex-direction: column;
     width: auto;
@@ -118,7 +131,7 @@ a {
     display: grid;
     gap: 14px 20px;
     
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .skill {
@@ -131,6 +144,8 @@ table {
     background-color: #fdfdfd;
     padding: 0;
     border-collapse: collapse;
+
+    transition: box-shadow 0.3s;
 }
 
 tr.detail > *:nth-child(2n-1) {
@@ -171,13 +186,70 @@ tr.effect td {
     padding: 8px 12px 8px 12px;
 }
 
-@media(max-width: 1300px) {
+@media(max-width: 1700px) and (min-width:1400px) {
+    .category:has(>.skill) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    #skills {
+        flex: 4;
+        padding: 16px;
+    }
+
+    #extra {
+        padding: 4em 16px 100px 16px;
+    }
+}
+
+@media(max-width: 1400px) and (min-width:900px) {
     .category:has(>.skill) {
         grid-template-columns: repeat(2, 1fr);
     }
 
     #skills {
+        flex: 3;
+        padding: 16px;
+    }
+
+    #extra {
+        padding: 4em 16px 100px 16px;
+    }
+}
+
+@media(max-width: 900px) and (min-width:600px) {
+    .category:has(>.skill) {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    #skills {
         flex: 2;
         padding: 16px;
+    }
+
+    #extra {
+        padding: 4em 16px 100px 16px;
+    }
+
+@media(max-width: 600px) {
+    .category:has(>.skill) {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    #skills {
+        flex: 10;
+        padding: 16px;
+    }
+
+    #extra {
+        padding: 4em 16px 100px 16px;
+    }
+
+    main {
+        flex-direction: column;
+    }
+
+    #nav {
+        max-height: 70%;
+        overflow-y: scroll;
     }
 }

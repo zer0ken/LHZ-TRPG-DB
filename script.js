@@ -19,6 +19,7 @@ let db;
 window.onload = function () {
     $("#file_uploads").on("change", fetchDB);
     $("#skills").on("scroll", onSkillScroll);
+    // _fetchDB();
 }
 
 function fetchDB() {
@@ -29,13 +30,15 @@ function fetchDB() {
         onDBLoaded();
     }
     fileReader.readAsText(file);
+}
 
-    // fetch("db.tsv")
-    //     .then(response => response.text())
-    //     .then(text => {
-    //         db = tsvToJSON(text);
-    //         onDBLoaded();
-        // });
+function _fetchDB() {
+    fetch("db.tsv")
+        .then(response => response.text())
+        .then(text => {
+            db = tsvToJSON(text);
+            onDBLoaded();
+        });
 }
 
 function onDBLoaded() {
@@ -68,10 +71,12 @@ function onSkillScroll() {
         }
     }
     $("#nav>.scroll").remove();
+    const $newNav = $(document.createDocumentFragment());
     for (let i = 0; i < hierarchy.length; i++) {
-        $("#nav").append($(`<a class="scroll" href="#${hierarchy[i].id}">`).text(hierarchy[i].innerText));
-        if (i < hierarchy.length - 1) $("#nav").append(`<span class="scroll">&nbsp;/&nbsp;</span>`);
+        $newNav.append($(`<a class="scroll" href="#${hierarchy[i].id}">`).text(hierarchy[i].innerText));
+        if (i < hierarchy.length - 1) $newNav.append(`<span class="scroll">/</span>`);
     }
+    $("#nav").prepend($newNav);
 }
 
 function preprocess() {
@@ -161,7 +166,8 @@ function buildFragment() {
 
 function buildSkillTable(skill) {
     const $fragment = $(document.createDocumentFragment()); 
-    let $skill = $(`<table class="skill">`).appendTo($fragment);
+    let $skill = $(`<table class="skill" id="${skill["이름"].replace(/[ :()]/g, "_")}">`).appendTo($fragment);
+    
     let $row;
 
     $row = $(`<tr class="name ${skill["구분"]}">`).appendTo($skill);
