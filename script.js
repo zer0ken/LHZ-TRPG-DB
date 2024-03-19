@@ -19,7 +19,11 @@ let db;
 window.onload = function () {
     $("#file_uploads").on("change", fetchDB);
     $("#skills").on("scroll", onSkillScroll);
-    // _fetchDB();
+    try {
+        _fetchDB();
+    } catch (error) {
+        console.error(error);
+    }
 }
 
 function fetchDB() {
